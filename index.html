@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#2D4B33">
+<title>ReUse · Sprint 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app" id="app">
+
+<!-- ONBOARDING -->
+<section class="screen" id="onb">
+  <div class="onb-top"><b>ReUse</b><button class="pill" data-go="email">Lewati</button></div>
+  <div class="onb-stage">
+    <div class="float" style="left:6%;top:6%;transform:rotate(-4deg)"><div class="ic" data-ic="book"></div><div>Buku Ekonomi<span>1,2 km</span></div></div>
+    <div class="float" style="right:6%;top:10%;transform:rotate(5deg)"><div class="ic" data-ic="table"></div><div>Meja Lipat<span>0,8 km</span></div></div>
+    <div class="float" style="left:8%;bottom:16%;transform:rotate(4deg)"><div class="ic" data-ic="shirt"></div><div>Kemeja PMB<span>0,9 km</span></div></div>
+    <div class="float" style="right:5%;bottom:24%;transform:rotate(-4deg)"><div class="ic" data-ic="laptop"></div><div>Charger 65W<span>2 km</span></div></div>
+    <div class="hub" data-ic="cycle"></div>
+  </div>
+  <div class="onb-card">
+    <h1 id="onbT"></h1><p id="onbP"></p>
+    <div class="onb-foot"><div class="dots" id="onbD"><i></i><i></i><i></i></div><button class="btn" id="onbN"></button></div>
+  </div>
+</section>
+
+<!-- EMAIL -->
+<section class="screen" id="email">
+  <div class="hero"><div class="c1"></div><div class="c2"></div>
+    <div class="brand"><div class="logo" data-ic="cycle"></div><h2>ReUse</h2><em>Your Old, Their Gold</em></div></div>
+  <form class="sheet" id="emailF" novalidate>
+    <h1>Daftar atau masuk</h1>
+    <p>Gunakan email kampus berakhiran .ac.id. Kami kirim kode OTP untuk verifikasi.</p>
+    <input class="field" id="emailI" type="email" placeholder="mahasiswa@mail.unpad.ac.id" autocomplete="email">
+    <div class="err" id="emailE"></div>
+    <button class="btn" id="emailB">Kirim kode OTP</button>
+  </form>
+</section>
+
+<!-- OTP -->
+<section class="screen" id="otp">
+  <div class="hero" style="min-height:260px"><div class="c1"></div><div class="c2"></div>
+    <div class="brand" style="margin-top:80px"><div class="logo" data-ic="mail"></div><h2 style="font-size:26px">Cek email kampusmu</h2><em id="otpTo"></em></div></div>
+  <form class="sheet" id="otpF" novalidate>
+    <button type="button" class="back" data-go="email"><span data-ic="left"></span>Ganti email</button>
+    <h1>Masukkan kode OTP</h1>
+    <p>6 digit kode berlaku 5 menit.</p>
+    <div class="otp" id="otpBox"></div>
+    <div class="err" id="otpE"></div>
+    <button class="btn" id="otpB" disabled>Verifikasi</button>
+    <div class="mini">Belum terima kode? <button type="button" id="resend"></button></div>
+  </form>
+</section>
+
+<!-- CAMPUS -->
+<section class="screen" id="campus">
+  <div class="top"><h1>Pilih kampusmu</h1></div>
+  <div class="body">
+    <p style="font-size:12.5px;color:var(--mut);margin-bottom:14px;line-height:1.5">Barang dan titik COD akan disesuaikan dengan kampus yang kamu pilih.</p>
+    <div class="camp" id="campL"></div>
+    <div class="err" id="campE"></div>
+  </div>
+  <div class="foot"><button class="btn" id="campB">Simpan & lanjut</button></div>
+</section>
+
+<!-- HOME -->
+<section class="screen" id="home">
+  <div class="hhead">
+    <div class="hrow"><div><small><span data-ic="pin"></span><span id="hCamp"></span></small><h1 id="hHi"></h1></div>
+      <button class="sbadge" id="scopeBtn"><span data-ic="flag"></span>Sprint 1</button></div>
+    <button class="search" data-lock="Pencarian & filter lanjutan"><span data-ic="search"></span>Cari barang di sekitar kampus<span class="lock" data-ic="lock"></span></button>
+  </div>
+  <div class="chips" id="chips"></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<!-- POST -->
+<section class="screen" id="post">
+  <div class="top"><button class="ibtn" id="postX"><span data-ic="x"></span></button><h1>Posting barang</h1></div>
+  <form class="body" id="postF" novalidate style="padding-bottom:30px">
+    <span class="lbl" style="margin-top:0">Foto barang <small id="phC">(0/5 · minimal 1)</small></span>
+    <div class="photos" id="phL"></div>
+    <input type="file" id="phI" accept="image/*" multiple hidden>
+    <div class="err" id="e-photos"></div>
+
+    <label class="lbl" for="pT">Nama barang</label>
+    <input class="field" id="pT" maxlength="60" placeholder="contoh: Kalkulator Casio fx-991ID">
+    <div class="err" id="e-title"></div>
+
+    <div class="row2">
+      <div><label class="lbl" for="pK">Kategori</label>
+        <select class="field" id="pK"><option value="">Pilih</option><option>Buku & Modul</option><option>Elektronik</option><option>Pakaian</option><option>Perabot Kos</option><option>Alat Tulis</option><option>Lainnya</option></select>
+        <div class="err" id="e-cat"></div></div>
+      <div><label class="lbl" for="pC">Kondisi</label>
+        <select class="field" id="pC"><option value="">Pilih</option><option>Seperti baru</option><option>Baik</option><option>Layak pakai</option></select>
+        <div class="err" id="e-cond"></div></div>
+    </div>
+
+    <span class="lbl">Mode</span>
+    <div class="seg" id="seg">
+      <button type="button" data-m="Sell"><span data-ic="tag" style="color:var(--sell)"></span>Sell<span>Jual dengan harga</span></button>
+      <button type="button" data-m="Swap"><span data-ic="swap" style="color:var(--swap)"></span>Swap<span>Tukar barang</span></button>
+      <button type="button" data-m="Donate"><span data-ic="gift" style="color:var(--don)"></span>Donate<span>Berikan gratis</span></button>
+    </div>
+    <div class="err" id="e-mode"></div>
+    <div id="mSell" hidden><label class="lbl" for="pP">Harga</label><div class="rp"><i>Rp</i><input class="field" id="pP" inputmode="numeric" placeholder="50.000"></div><div class="err" id="e-price"></div></div>
+    <div id="mSwap" hidden><label class="lbl" for="pW">Ingin ditukar dengan</label><input class="field" id="pW" maxlength="80" placeholder="contoh: buku Statistika / headset"><div class="err" id="e-wish"></div></div>
+    <div id="mDonate" hidden><div class="verif" style="background:#FBEFE6;color:#7A3A12;margin-top:12px"><span data-ic="gift" style="color:var(--don)"></span>Barang akan ditampilkan gratis untuk mahasiswa yang membutuhkan.</div></div>
+
+    <label class="lbl" for="pD">Deskripsi <small>(opsional)</small></label>
+    <textarea class="field" id="pD" maxlength="400" placeholder="Ceritakan kondisi, alasan dilepas, kelengkapan…"></textarea>
+
+    <span class="lbl">Titik COD <small>· area kampus</small></span>
+    <div class="map" id="map"></div>
+    <div class="cods" id="cods"></div>
+    <div class="err" id="e-cod"></div>
+
+    <button class="btn" style="margin-top:14px" id="postB">Posting barang</button>
+  </form>
+</section>
+
+<!-- DETAIL -->
+<section class="screen" id="detail"></section>
+
+<!-- PROFILE -->
+<section class="screen" id="profile">
+  <div class="top"><h1>Profil</h1></div>
+  <div class="prof"><div class="av" id="pfAv"></div><h2 id="pfN"></h2><p id="pfE"></p>
+    <div class="verif" style="text-align:left;margin-top:14px" id="pfV"></div></div>
+  <div class="list">
+    <div><span data-ic="pin"></span>Kampus<span class="r" id="pfC"></span></div>
+    <div><span data-ic="box"></span>Barang diposting<span class="r" id="pfP"></span></div>
+    <button data-lock="Edit profil & riwayat transaksi"><span data-ic="user"></span>Edit profil<span class="r"><span data-ic="lock"></span></span></button>
+    <button id="scopeBtn2"><span data-ic="flag"></span>Cakupan Sprint 1<span class="r"><span data-ic="right"></span></span></button>
+    <button id="logout" style="color:#B3261E"><span data-ic="out"></span>Keluar & reset demo</button>
+  </div>
+  <div style="height:110px"></div>
+</section>
+
+<nav class="nav" id="nav" hidden>
+  <button data-tab="home"><span data-ic="home"></span>Beranda</button>
+  <button data-lock="Pencarian"><span data-ic="search"></span>Cari<span class="lk" data-ic="lock"></span></button>
+  <button data-tab="post" aria-label="Posting"><span class="fab" data-ic="plus"></span></button>
+  <button data-lock="Chat dengan pemilik barang"><span data-ic="chat"></span>Chat<span class="lk" data-ic="lock"></span></button>
+  <button data-tab="profile"><span data-ic="user"></span>Profil</button>
+</nav>
+
+<div class="inbox" id="inbox"><div class="av" data-ic="mail"></div><div><small>ReUse · Email kampus · sekarang</small><b>Kode verifikasi kamu: </b><code id="inboxC"></code></div></div>
+<div class="scrim" id="scrim"><div class="modal" id="modal"></div></div>
+<div class="toast" id="toast"></div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
